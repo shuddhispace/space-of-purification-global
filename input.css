@@ -1,0 +1,26 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ✅ Your custom styles start here */
+
+.story-card {
+  @apply bg-white rounded-2xl shadow-lg p-6 transition hover:scale-105 duration-300;
+}
+
+.cta-button {
+  @apply bg-orange-500 text-white py-2 px-4 rounded-xl hover:bg-orange-600 transition duration-300;
+}
+
+/* Custom fixes */
+.story-image {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+  border-radius: 1rem;
+}
+
+/* Pricing Plan Hover & Animation */
+.cta-button {
+  @apply bg-orange-500 text-white py-2 px-4 rounded-xl hover:bg-orange-600 transition duration-300;
+}

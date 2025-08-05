@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Share Your Story | Space of Purification Global</title>
+  <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+  <link href="./output.css" rel="stylesheet" />
+</head>
+
+<body class="pt-28 bg-gradient-to-br from-blue-50 via-purple-50 to-pink-50 min-h-screen flex flex-col">
+
+  <!-- Sticky Header -->
+  <header class="fixed top-0 left-0 w-full bg-white shadow-md z-50">
+    <div class="max-w-7xl mx-auto px-4 py-3 flex items-center justify-between relative">
+<a href="/index.html" class="flex items-center gap-4">
+  <img src="images/logo.png" alt="Logo" class="h-10 w-10 object-cover rounded-full" />
+  <span class="text-base font-bold text-blue-700 whitespace-nowrap hidden md:inline">Space of Purification Global</span>
+</a>
+
+      <div class="absolute left-1/2 transform -translate-x-1/2 md:hidden">
+        <span class="text-base font-bold text-blue-700 text-center whitespace-nowrap">Space of Purification Global</span>
+      </div>
+      <nav class="hidden md:flex absolute left-1/2 transform -translate-x-1/2 space-x-6 text-gray-700 font-medium">
+        <a href="/index.html#home" class="hover:text-blue-600 transition">Home</a>
+        <a href="/index.html#about" class="hover:text-blue-600 transition">About</a>
+        <a href="/index.html#share-story" class="hover:text-blue-600 transition">Share Story</a>
+        <a href="/index.html#pricing" class="hover:text-blue-600 transition">Plans</a>
+      </nav>
+      <div class="flex items-center gap-4">
+        <div class="hidden md:flex items-center space-x-3">
+          <a href="tel:+919769300131" class="bg-blue-600 text-white px-4 py-2 rounded-full text-sm hover:bg-blue-700 transition">📞 Call</a>
+          <a href="https://wa.me/919769300131" class="bg-green-500 text-white px-4 py-2 rounded-full text-sm hover:bg-green-600 transition">💬 WhatsApp</a>
+        </div>
+        <button id="mobileMenuBtn" class="md:hidden text-gray-700 focus:outline-none z-10">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+          </svg>
+        </button>
+      </div>
+    </div>
+    <div id="mobileMenu" class="md:hidden hidden px-4 pb-4 bg-white border-t">
+      <nav class="flex flex-col space-y-2 text-gray-700 font-medium">
+        <a href="#home" class="hover:text-blue-600">Home</a>
+        <a href="#about" class="hover:text-blue-600">About</a>
+        <a href="#share-story" class="hover:text-blue-600">Share Story</a>
+        <a href="#pricing" class="hover:text-blue-600">Plans</a>
+        <a href="#contact" class="hover:text-blue-600">Contact</a>
+        <a href="tel:+919769300131" class="bg-blue-600 text-white rounded-full px-4 py-2 text-center">📞 Call</a>
+        <a href="https://wa.me/919769300131" class="bg-green-500 text-white rounded-full px-4 py-2 text-center">💬 WhatsApp</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Main Form Section -->
+  <main class="flex-grow flex items-center justify-center px-4 py-10">
+    <form id="storyForm" action="/submit-story" method="POST" enctype="multipart/form-data"
+          class="max-w-xl w-full bg-white p-6 rounded-2xl shadow-lg border border-blue-100">
+      
+      <h2 class="text-2xl font-bold mb-6 text-center text-blue-700">Share Your Transformation Story</h2>
+
+      <div class="space-y-4">
+        <div>
+          <label for="name" class="block text-sm font-medium text-gray-700">Your Name *</label>
+          <input type="text" name="name" id="name" required class="w-full mt-1 px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500" />
+        </div>
+
+        <div>
+          <label for="email" class="block text-sm font-medium text-gray-700">Email *</label>
+          <input type="email" name="email" id="email" required class="w-full mt-1 px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500" />
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          <div>
+            <label for="city" class="block text-sm font-medium text-gray-700">City</label>
+            <input type="text" name="city" id="city" class="w-full mt-1 px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500" />
+          </div>
+          <div>
+            <label for="country" class="block text-sm font-medium text-gray-700">Country</label>
+            <input type="text" name="country" id="country" class="w-full mt-1 px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500" />
+          </div>
+        </div>
+
+        <div>
+          <label for="story" class="block text-sm font-medium text-gray-700">Your Story *</label>
+          <textarea name="story" id="story" rows="5" required class="w-full mt-1 px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 resize-none"></textarea>
+        </div>
+
+        <div>
+          <label for="image" class="block text-sm font-medium text-gray-700">Upload Image (optional)</label>
+          <input type="file" name="image" id="image" accept="image/*"
+                 class="w-full mt-1 file:px-4 file:py-2 file:rounded-md file:border file:border-gray-300 file:bg-white file:text-gray-700 hover:file:bg-gray-100" />
+          <img id="preview" class="mt-3 w-24 h-24 object-cover rounded-lg hidden" />
+        </div>
+
+        <button type="submit"
+                class="w-full bg-blue-600 text-white font-semibold py-3 rounded-full hover:bg-blue-700 transition duration-300">
+          Submit Your Story
+        </button>
+      </div>
+    </form>
+  </main>
+
+  <!-- Footer (unchanged) -->
+  <footer class="bg-gray-900 text-gray-300 px-6 py-12 rounded-t-3xl shadow-inner">
+    <div class="max-w-7xl mx-auto grid grid-cols-1 sm:grid-cols-2 md:grid-cols-5 gap-6">
+      <div class="text-purple-400 italic text-base">“Purify the Mind. Heal the Soul.”</div>
+      <div class="text-gray-400 leading-6">
+        <p>64, RNA Arcade, 1st Floor</p>
+        <p>Lokhandwala Complex, Andheri West</p>
+        <p>Mumbai, Maharashtra</p>
+        <p>India - 400053</p>
+      </div>
+      <div><h2 class="text-white font-bold text-lg">Space of Purification Global</h2></div>
+      <div>
+        <ul class="space-y-1 text-gray-400">
+          <li><a href="#home" class="hover:text-white transition">Home</a></li>
+          <li><a href="#about" class="hover:text-white transition">About You</a></li>
+          <li><a href="#pricing" class="hover:text-white transition">Pricing</a></li>
+          <li><a href="#share-story" class="hover:text-white transition">Share Your Story</a></li>
+        </ul>
+      </div>
+      <div class="space-y-2">
+        <p>📞 +91 9769300131</p>
+        <p>📧 <a href="mailto:shuddhispace@gmail.com" class="underline hover:text-white">shuddhispace@gmail.com</a></p>
+        <a href="https://wa.me/919769300131" target="_blank" class="inline-block bg-green-500 hover:bg-green-600 text-white px-4 py-2 rounded-md shadow transition">
+          WhatsApp Us
+        </a>
+      </div>
+    </div>
+    <div class="border-t border-gray-700 mt-12 pt-6 text-center text-sm text-gray-500">
+      &copy; 2025 Space of Purification Global. All rights reserved.
+    </div>
+  </footer>
+
+  <script>
+    // Mobile menu toggle
+    document.getElementById('mobileMenuBtn').addEventListener('click', () => {
+      document.getElementById('mobileMenu').classList.toggle('hidden');
+    });
+
+    // Image preview
+    document.getElementById('image').addEventListener('change', function (e) {
+      const preview = document.getElementById('preview');
+      const file = e.target.files[0];
+      if (file) {
+        preview.src = URL.createObjectURL(file);
+        preview.classList.remove('hidden');
+      } else {
+        preview.classList.add('hidden');
+      }
+    });
+
+    // Form submission with thank you message
+    document.getElementById("storyForm").addEventListener("submit", async function (e) {
+      e.preventDefault();
+
+      const form = e.target;
+      const formData = new FormData(form);
+
+      const response = await fetch("/submit-story", {
+        method: "POST",
+        body: formData,
+      });
+
+      if (response.ok) {
+        const bc = new BroadcastChannel("storyChannel");
+        bc.postMessage("new-story-submitted");
+
+        form.innerHTML = `
+          <div class="text-center py-12 animate__animated animate__fadeInUp">
+            <p class="text-green-600 font-bold text-lg">✅ Thank you! Your story has been submitted.</p>
+            <p class="text-gray-600 mt-2">You may close this tab or continue browsing.</p>
+          </div>
+        `;
+        window.scrollTo({ top: 0, behavior: "smooth" });
+      } else {
+        alert("❌ Failed to submit your story. Please try again.");
+      }
+    });
+  </script>
+</body>
+</html>
