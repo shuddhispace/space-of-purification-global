@@ -44,108 +44,84 @@
 
   <!-- ✅ Local Business Schema -->
   <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "LocalBusiness",
-    "name": "Space of Purification Global",
-    "image": "https://space-of-purification-global.onrender.com/images/logo.png",
-    "@id": "https://space-of-purification-global.onrender.com",
-    "url": "https://space-of-purification-global.onrender.com",
-    "telephone": "+91-9769300131",
-    "email": "shuddhispace@gmail.com",
-    "priceRange": "₹₹",
-    "address": {
-      "@type": "PostalAddress",
-      "streetAddress": "64, RNA Arcade, 1st Floor, Lokhandwala Complex, Andheri West",
-      "addressLocality": "Mumbai",
-      "addressRegion": "Maharashtra",
-      "postalCode": "400053",
-      "addressCountry": "IN"
+{
+  "@context": "https://schema.org",
+  "@type": "LocalBusiness",
+  "name": "Space of Purification Global",
+  "image": "https://space-of-purification-global.onrender.com/images/logo.png",
+  "@id": "https://space-of-purification-global.onrender.com",
+  "url": "https://space-of-purification-global.onrender.com",
+  "telephone": "+91-9769300131",
+  "email": "shuddhispace@gmail.com",
+  "priceRange": "₹₹",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "64, RNA Arcade, 1st Floor, Lokhandwala Complex, Andheri West",
+    "addressLocality": "Mumbai",
+    "addressRegion": "Maharashtra",
+    "postalCode": "400053",
+    "addressCountry": "IN"
+  },
+  "geo": {
+    "@type": "GeoCoordinates",
+    "latitude": "19.1340",
+    "longitude": "72.8258"
+  },
+  "openingHoursSpecification": [{
+    "@type": "OpeningHoursSpecification",
+    "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"],
+    "opens": "09:00",
+    "closes": "20:00"
+  }],
+  "makesOffer": [
+    {
+      "@type": "Offer",
+      "itemOffered": {
+        "@type": "Service",
+        "serviceType": "Healing Sessions",
+        "description": "Personal and group healing sessions to relieve emotional pain and restore peace."
+      },
+      "priceCurrency": "INR",
+      "price": "1999",
+      "url": "https://space-of-purification-global.onrender.com#pricing"
     },
-    "geo": {
-      "@type": "GeoCoordinates",
-      "latitude": "19.1340",
-      "longitude": "72.8258"
+    {
+      "@type": "Offer",
+      "itemOffered": {
+        "@type": "Service",
+        "serviceType": "Anxiety Relief Therapy",
+        "description": "Guided therapy to overcome anxiety, restore calm, and regain clarity in life."
+      },
+      "priceCurrency": "INR",
+      "price": "3999",
+      "url": "https://space-of-purification-global.onrender.com#pricing"
     },
-    "openingHoursSpecification": [{
-      "@type": "OpeningHoursSpecification",
-      "dayOfWeek": [
-        "Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"
-      ],
-      "opens": "09:00",
-      "closes": "20:00"
-    }]
-  }
-  </script>
+    {
+      "@type": "Offer",
+      "itemOffered": {
+        "@type": "Service",
+        "serviceType": "Overthinking Therapy",
+        "description": "Programs designed to break the cycle of overthinking and create inner peace."
+      },
+      "priceCurrency": "INR",
+      "price": "3999",
+      "url": "https://space-of-purification-global.onrender.com#pricing"
+    },
+    {
+      "@type": "Offer",
+      "itemOffered": {
+        "@type": "Service",
+        "serviceType": "Life Transformation Programs",
+        "description": "Comprehensive transformation programs for deep healing, clarity, and purpose."
+      },
+      "priceCurrency": "INR",
+      "price": "6999",
+      "url": "https://space-of-purification-global.onrender.com#pricing"
+    }
+  ]
+}
+</script>
 
-  <!-- ✅ Service Schemas -->
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "Service",
-    "serviceType": "Healing Sessions",
-    "provider": {
-      "@type": "LocalBusiness",
-      "name": "Space of Purification Global"
-    },
-    "areaServed": {
-      "@type": "Place",
-      "name": "Mumbai and Global"
-    },
-    "description": "Personal and group healing sessions to relieve emotional pain and restore peace."
-  }
-  </script>
-
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "Service",
-    "serviceType": "Anxiety Relief Therapy",
-    "provider": {
-      "@type": "LocalBusiness",
-      "name": "Space of Purification Global"
-    },
-    "areaServed": {
-      "@type": "Place",
-      "name": "Mumbai and Global"
-    },
-    "description": "Guided therapy to overcome anxiety, restore calm, and regain clarity in life."
-  }
-  </script>
-
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "Service",
-    "serviceType": "Overthinking Therapy",
-    "provider": {
-      "@type": "LocalBusiness",
-      "name": "Space of Purification Global"
-    },
-    "areaServed": {
-      "@type": "Place",
-      "name": "Mumbai and Global"
-    },
-    "description": "Programs designed to break the cycle of overthinking and create inner peace."
-  }
-  </script>
-
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "Service",
-    "serviceType": "Life Transformation Programs",
-    "provider": {
-      "@type": "LocalBusiness",
-      "name": "Space of Purification Global"
-    },
-    "areaServed": {
-      "@type": "Place",
-      "name": "Mumbai and Global"
-    },
-    "description": "Comprehensive transformation programs for deep healing, clarity, and purpose."
-  }
-  </script>
 </head>
 
 
