@@ -37,13 +37,13 @@ const storage = multer.diskStorage({
 const upload = multer({ storage });
 
 // Handle story submission
-app.post('/submit-story', upload.single('image'), (req, res) => {
+
+app.post('/submit-story', upload.none(), (req, res) => {
   try {
     const { name, email, city, country, story } = req.body;
-    const image = req.file ? req.file.filename : null;
 
-    if (!name || !email || !story) {
-      return res.status(500).json({ error: 'Missing required fields' });
+    if (!name || !story) {
+      return res.status(400).json({ error: 'Name and story are required' });
     }
 
     const storyData = {
@@ -52,7 +52,6 @@ app.post('/submit-story', upload.single('image'), (req, res) => {
       city,
       country,
       story,
-      image,
       timestamp: new Date().toISOString(),
     };
 
@@ -62,13 +61,11 @@ app.post('/submit-story', upload.single('image'), (req, res) => {
     fs.writeFile(filepath, JSON.stringify(storyData, null, 2), (err) => {
       if (err) {
         logError(err);
-        console.error('❌ Error saving story:', err);
         return res.status(500).json({ error: 'Error saving story' });
       }
 
       console.log('✅ Story saved:', filename);
 
-      // ✅ Smart response based on request type
       if (req.headers.accept && req.headers.accept.includes('application/json')) {
         res.json({ message: 'Story submitted successfully' });
       } else {
@@ -77,10 +74,11 @@ app.post('/submit-story', upload.single('image'), (req, res) => {
     });
   } catch (error) {
     logError(error);
-    console.error('❌ Unexpected error:', error);
     res.status(500).json({ error: 'Internal server error' });
   }
 });
+
+
 
 // Serve stories
 app.get('/stories', (req, res) => {
