@@ -52,94 +52,54 @@
     </div>
   </header>
 
-   <div class="min-h-screen flex items-center justify-center px-4">
-    <div class="w-full max-w-lg bg-white shadow-xl rounded-2xl p-8">
-      <h1 class="text-2xl font-bold text-center mb-6 text-indigo-700">🌟 Share Your Transformation Story</h1>
-      <p class="text-gray-600 text-center mb-6">Your story can inspire others to begin their own journey!</p>
+  <!-- Main Form Section -->
+  <main class="flex-grow flex items-center justify-center px-4 py-10">
+    <form id="storyForm" action="/submit-story" method="POST" enctype="multipart/form-data"
+          class="max-w-xl w-full bg-white p-6 rounded-2xl shadow-lg border border-blue-100">
+      
+      <h2 class="text-2xl font-bold mb-6 text-center text-blue-700">Share Your Transformation Story</h2>
 
-      <!-- Form -->
-      <form id="storyForm" class="space-y-5" method="POST" action="/submit-story">
-        <!-- Name -->
+      <div class="space-y-4">
         <div>
-          <label for="name" class="block text-sm font-medium text-gray-700">Full Name *</label>
-          <input type="text" id="name" name="name" required
-            class="w-full mt-1 px-4 py-2 border rounded-lg shadow-sm focus:ring-indigo-500 focus:border-indigo-500">
+          <label for="name" class="block text-sm font-medium text-gray-700">Your Name *</label>
+          <input type="text" name="name" id="name" required class="w-full mt-1 px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500" />
         </div>
 
-        <!-- Email -->
         <div>
-          <label for="email" class="block text-sm font-medium text-gray-700">Email (optional)</label>
-          <input type="email" id="email" name="email" required
-            class="w-full mt-1 px-4 py-2 border rounded-lg shadow-sm focus:ring-indigo-500 focus:border-indigo-500">
+          <label for="email" class="block text-sm font-medium text-gray-700">Email </label>
+          <input type="email" name="email" id="email" required class="w-full mt-1 px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500" />
         </div>
 
-        <!-- City -->
-        <div>
-          <label for="city" class="block text-sm font-medium text-gray-700">City</label>
-          <input type="text" id="city" name="city"
-            class="w-full mt-1 px-4 py-2 border rounded-lg shadow-sm focus:ring-indigo-500 focus:border-indigo-500">
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          <div>
+            <label for="city" class="block text-sm font-medium text-gray-700">City</label>
+            <input type="text" name="city" id="city" class="w-full mt-1 px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500" />
+          </div>
+          <div>
+            <label for="country" class="block text-sm font-medium text-gray-700">Country</label>
+            <input type="text" name="country" id="country" class="w-full mt-1 px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500" />
+          </div>
         </div>
 
-        <!-- Country -->
-        <div>
-          <label for="country" class="block text-sm font-medium text-gray-700">Country</label>
-          <input type="text" id="country" name="country"
-            class="w-full mt-1 px-4 py-2 border rounded-lg shadow-sm focus:ring-indigo-500 focus:border-indigo-500">
-        </div>
-
-        <!-- Story -->
         <div>
           <label for="story" class="block text-sm font-medium text-gray-700">Your Story *</label>
-          <textarea id="story" name="story" required rows="5"
-            class="w-full mt-1 px-4 py-2 border rounded-lg shadow-sm focus:ring-indigo-500 focus:border-indigo-500"
-            placeholder="Write your transformation journey here..."></textarea>
+          <textarea name="story" id="story" rows="5" required class="w-full mt-1 px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 resize-none"></textarea>
         </div>
 
-        <!-- Submit -->
-        <div class="text-center">
-          <button type="submit"
-            class="w-full py-3 px-6 bg-indigo-600 hover:bg-indigo-700 text-white font-semibold rounded-lg shadow-md transition duration-200">
-            ✨ Share My Story
-          </button>
-        </div>
-      </form>
+        <!-- <div>
+          <label for="image" class="block text-sm font-medium text-gray-700">Upload Image (optional)</label>
+          <input type="file" name="image" id="image" accept="image/*"
+                 class="w-full mt-1 file:px-4 file:py-2 file:rounded-md file:border file:border-gray-300 file:bg-white file:text-gray-700 hover:file:bg-gray-100" />
+          <img id="preview" class="mt-3 w-24 h-24 object-cover rounded-lg hidden" />
+        </div> -->
 
-      <!-- Success Message -->
-      <p id="successMessage" class="hidden mt-6 text-center text-green-600 font-medium">
-        ✅ Thank you for sharing your story! It will inspire many.
-      </p>
-    </div>
-  </div>
-
-  <script>
-    const form = document.getElementById('storyForm');
-    const successMessage = document.getElementById('successMessage');
-
-    form.addEventListener('submit', async (e) => {
-      e.preventDefault();
-      const formData = new FormData(form);
-      const data = Object.fromEntries(formData.entries());
-
-      try {
-        const response = await fetch('/submit-story', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify(data)
-        });
-
-        if (response.ok) {
-          form.reset();
-          form.classList.add('hidden');
-          successMessage.classList.remove('hidden');
-        } else {
-          alert('❌ Something went wrong. Please try again.');
-        }
-      } catch (error) {
-        console.error('Error:', error);
-        alert('⚠️ Error submitting your story.');
-      }
-    });
-  </script>
+        <button type="submit"
+                class="w-full bg-blue-600 text-white font-semibold py-3 rounded-full hover:bg-blue-700 transition duration-300">
+          Submit Your Story
+        </button>
+      </div>
+    </form>
+  </main>
 
   <!-- Footer (unchanged) -->
   <footer class="bg-gray-900 text-gray-300 px-6 py-12 rounded-t-3xl shadow-inner">

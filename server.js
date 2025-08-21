@@ -37,14 +37,20 @@ const storage = multer.diskStorage({
 const upload = multer({ storage });
 
 // Handle story submission
-app.post('/submit-story', upload.single('image'), (req, res) => {
+// app.post('/submit-story', upload.single('image'), (req, res) => {
+  app.post('/submit-story', express.urlencoded({ extended: true }), (req, res) => {
+
   try {
     const { name, email, city, country, story } = req.body;
-    const image = req.file ? req.file.filename : null;
+    // const image = req.file ? req.file.filename : null;
 
-    if (!name || !email || !story) {
-      return res.status(500).json({ error: 'Missing required fields' });
-    }
+    // if (!name || !email || !story) {
+    //   return res.status(500).json({ error: 'Missing required fields' });
+    // }
+
+if (!name || !story) {
+  return res.status(400).json({ error: 'Name and story are required' });
+}
 
     const storyData = {
       name,
@@ -52,7 +58,7 @@ app.post('/submit-story', upload.single('image'), (req, res) => {
       city,
       country,
       story,
-      image,
+      // image,
       timestamp: new Date().toISOString(),
     };
 
