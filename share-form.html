@@ -115,35 +115,6 @@
     </div>
   </div>
 
-  <script>
-    const form = document.getElementById('storyForm');
-    const successMessage = document.getElementById('successMessage');
-
-    form.addEventListener('submit', async (e) => {
-      e.preventDefault();
-      const formData = new FormData(form);
-      const data = Object.fromEntries(formData.entries());
-
-      try {
-        const response = await fetch('/submit-story', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify(data)
-        });
-
-        if (response.ok) {
-          form.reset();
-          form.classList.add('hidden');
-          successMessage.classList.remove('hidden');
-        } else {
-          alert('❌ Something went wrong. Please try again.');
-        }
-      } catch (error) {
-        console.error('Error:', error);
-        alert('⚠️ Error submitting your story.');
-      }
-    });
-  </script>
 
   <!-- Footer (unchanged) -->
   <footer class="bg-gray-900 text-gray-300 px-6 py-12 rounded-t-3xl shadow-inner">
@@ -176,15 +147,16 @@
       &copy; 2025 Space of Purification Global. All rights reserved.
     </div>
   </footer>
+<script>
+  // Mobile menu toggle
+  document.getElementById('mobileMenuBtn').addEventListener('click', () => {
+    document.getElementById('mobileMenu').classList.toggle('hidden');
+  });
 
-  <script>
-    // Mobile menu toggle
-    document.getElementById('mobileMenuBtn').addEventListener('click', () => {
-      document.getElementById('mobileMenu').classList.toggle('hidden');
-    });
-
-    // Image preview
-    document.getElementById('image').addEventListener('change', function (e) {
+  // ✅ Safe check before using image input
+  const imageInput = document.getElementById('image');
+  if (imageInput) {
+    imageInput.addEventListener('change', function (e) {
       const preview = document.getElementById('preview');
       const file = e.target.files[0];
       if (file) {
@@ -194,34 +166,36 @@
         preview.classList.add('hidden');
       }
     });
+  }
 
-    // Form submission with thank you message
-    document.getElementById("storyForm").addEventListener("submit", async function (e) {
-      e.preventDefault();
+  // Form submission with thank you message
+  document.getElementById("storyForm").addEventListener("submit", async function (e) {
+    e.preventDefault();
 
-      const form = e.target;
-      const formData = new FormData(form);
+    const form = e.target;
+    const formData = new FormData(form);
 
-      const response = await fetch("/submit-story", {
-        method: "POST",
-        body: formData,
-      });
-
-      if (response.ok) {
-        const bc = new BroadcastChannel("storyChannel");
-        bc.postMessage("new-story-submitted");
-
-        form.innerHTML = `
-          <div class="text-center py-12 animate__animated animate__fadeInUp">
-            <p class="text-green-600 font-bold text-lg">✅ Thank you! Your story has been submitted.</p>
-            <p class="text-gray-600 mt-2">You may close this tab or continue browsing.</p>
-          </div>
-        `;
-        window.scrollTo({ top: 0, behavior: "smooth" });
-      } else {
-        alert("❌ Failed to submit your story. Please try again.");
-      }
+    const response = await fetch("/submit-story", {
+      method: "POST",
+      body: formData,
     });
-  </script>
+
+    if (response.ok) {
+      const bc = new BroadcastChannel("storyChannel");
+      bc.postMessage("new-story-submitted");
+
+      form.innerHTML = `
+        <div class="text-center py-12 animate__animated animate__fadeInUp">
+          <p class="text-green-600 font-bold text-lg">✅ Thank you! Your story has been submitted.</p>
+          <p class="text-gray-600 mt-2">You may close this tab or continue browsing.</p>
+        </div>
+      `;
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    } else {
+      alert("❌ Failed to submit your story. Please try again.");
+    }
+  });
+</script>
+
 </body>
 </html>
