@@ -42,7 +42,8 @@ app.post('/submit-story', upload.single('image'), (req, res) => {
     const { name, email, city, country, story } = req.body;
     const image = req.file ? req.file.filename : null;
 
-    if (!name || !email || !story) {
+    // if (!name || !email || !story) {
+    if (!name || !story) {
       return res.status(500).json({ error: 'Missing required fields' });
     }
 
